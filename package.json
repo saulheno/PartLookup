@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npx gh-pages -d dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
@@ -15,6 +15,8 @@
     "vite": "^4.2.0"
   },
   "dependencies": {
-    "gh-pages": "^5.0.0"
+    "@google-cloud/storage": "^6.9.4",
+    "gh-pages": "^5.0.0",
+    "mongodb": "^5.1.0"
   }
 }
