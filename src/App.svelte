@@ -27,122 +27,56 @@
     <button type="submit">Search</button>
   </form>
   {#if parts}
+  <div class="container">
     <h2>{id}</h2>
-    <img src={imageUrl} alt={id} />
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Part Number</th>
-          <th>Part Name</th>
-          <th>Qty</th>
-          <th>Ex Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each Object.keys(parts) as id}
+      <div class="image-container">
+        <img src={imageUrl} alt={id} />
+      </div>
+    <div class="table-container">
+      <table id="main">
+        <thead>
           <tr>
-            <td>{id}</td>
-            <td><table>     
-              {#if parts[id].hasOwnProperty('partno')}
-                <tr>
-                  
-                  <td>{parts[id].partno || '-'}</td>
-                  
-                </tr>
-              {/if}
-
-              {#if parts[id].hasOwnProperty('partno2')}
-                <tr>
-                  
-                  <td>{parts[id].partno2 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('partno3')}
-                <tr>
-                  
-                  <td>{parts[id].partno3 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('partno4')}
-                <tr>
-                  
-                  <td>{parts[id].partno4 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('partno5')}
-                <tr>
-                  
-                  <td>{parts[id].partno5 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-            
-            </table></td>
-            <td>{parts[id].partname}</td>
-            <td>{parts[id].qty}</td>
-            <td><table>     
-              {#if parts[id].hasOwnProperty('exinfo')}
-                <tr>
-                  
-                  <td>{parts[id].exinfo || '-'}</td>
-                  
-                </tr>
-              {/if}
-
-              {#if parts[id].hasOwnProperty('exinfo2')}
-                <tr>
-                  
-                  <td>{parts[id].exinfo2 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('exinfo3')}
-                <tr>
-                  
-                  <td>{parts[id].exinfo3 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('exinfo4')}
-                <tr>
-                  
-                  <td>{parts[id].exinfo4 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-              {#if parts[id].hasOwnProperty('exinfo5')}
-                <tr>
-                  
-                  <td>{parts[id].exinfo5 || '-'}</td>
-                  
-                </tr>
-              
-              {/if}
-
-            </table></td>
-
+            <th>ID</th>
+            <th>Part Number</th>
+            <th>Part Name</th>
+            <th>Qty</th>
+            <th>Ex Info</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {#each Object.keys(parts) as id}
+            <tr>
+              <td>{id}</td>
+              <td>
+                <table>
+                  {#each ['partno', 'partno2', 'partno3', 'partno4', 'partno5'] as partnoProp}
+                    {#if parts[id].hasOwnProperty(partnoProp)}
+                      <tr>
+                        <td>{parts[id][partnoProp] || '-'}</td>
+                      </tr>
+                    {/if}
+                  {/each}
+                </table>
+              </td>
+              <td>{parts[id].partname || '-'}</td>
+              <td>{parts[id].qty || '-'}</td>
+              <td>
+                <table>
+                  {#each ['exinfo', 'exinfo2', 'exinfo3', 'exinfo4', 'exinfo5'] as exinfoProp}
+                    {#if parts[id].hasOwnProperty(exinfoProp)}
+                      <tr>
+                        <td>{parts[id][exinfoProp] || '-'}</td>
+                      </tr>
+                    {/if}
+                  {/each}
+                </table>
+              </td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </div>
   {:else if id}
     <p>No parts found for ID {id}</p>
   {/if}
