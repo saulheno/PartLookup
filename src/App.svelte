@@ -1,7 +1,8 @@
 <script>
   import svelteLogo from "./assets/svelte.svg";
   import viteLogo from "/vite.svg";
-  import Result from './lib/Result.svelte'
+  import Result from './Result.svelte'
+  import Home from './Home.svelte';
   import { getPartsById } from "./mongo.js";
   import { getImageUrl } from "./storage.js";
   import { each, loop_guard } from "svelte/internal";
@@ -23,6 +24,20 @@
       imageUrl = await getImageUrl(id);
     }
     
+  }
+
+  async function handleImgClick(img_id) {
+    parts = null;
+    imageUrl = "";
+    id = img_id;
+    parts = await getPartsById(id);
+    console.log(parts)
+    if (parts === null) {
+      parts = "None";
+      searchID = id;
+    } else {
+      imageUrl = await getImageUrl(id);
+    }
   }
 
   async function handleClick(event) {
@@ -48,5 +63,6 @@
       </form>
     </div>
   </div>
+  <Home {parts} {handleImgClick}/>
   <Result {parts} {imageUrl} {id} {searchID}/>
 </main>
