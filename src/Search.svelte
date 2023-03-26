@@ -34,34 +34,53 @@ import { getImageUrl } from "./storage.js";
 {/if}
 
 <style>
+  .thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: vw(100);
+    margin: 0 auto;
+  }
+
+  .container {
+    position: relative;
+    width: calc(100% / 6);
+    margin-bottom: 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  img:hover {
+  cursor: pointer;
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  /* Media queries for mobile devices */
+  @media (max-width: 600px) {
     .thumbnails {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-width: vw(100);
-      margin: 0 auto;
+      flex-direction: column;
     }
-  
+
     .container {
-      position: relative;
-      width: calc(100% / 6);
-      margin-bottom: 10px;
-    }
-  
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  
-    .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      font-size: 18px;
-      padding: 10px;
-      box-sizing: border-box;
     }
+
+    .caption {
+      font-size: 14px;
+    }
+  }
+
   </style>
