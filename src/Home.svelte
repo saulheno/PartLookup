@@ -56,6 +56,10 @@
     height: auto;
   }
 
+  img:hover {
+  cursor: pointer;
+  }
+
   .caption {
     position: absolute;
     bottom: 0;
@@ -67,4 +71,19 @@
     padding: 10px;
     box-sizing: border-box;
   }
+  /* Media queries for mobile devices */
+  @media (max-width: 600px) {
+    .thumbnails {
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .caption {
+      font-size: 14px;
+    }
+  }
+
 </style>
