@@ -1,11 +1,11 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
   import { getImageUrl } from "./storage.js";
   import { getParts } from "./mongo.js";
   import { onMount } from "svelte";
  
   export let handleImgClick;
   export let parts;
+  export let data;
   let partsData = [];
 
   let url = "";
@@ -21,7 +21,7 @@
   };
 </script>
 
-{#if parts == null || parts == "None"}
+{#if data == null && parts == null || parts == "None" }
   <div class="thumbnails">
     {#each Object.keys(partsData) as img_id}
       <div class="container">
@@ -30,7 +30,7 @@
         {:catch error}
           <div>Error: {error.message}</div>
         {/await}
-        <div class="caption">{partsData[img_id]}</div>
+        <div class="caption">{img_id + " " + partsData[img_id]}</div>
       </div>
     {/each}
   </div>

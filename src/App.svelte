@@ -1,28 +1,24 @@
 <script>
-  import svelteLogo from "./assets/svelte.svg";
-  import viteLogo from "/vite.svg";
   import Result from './Result.svelte'
   import Home from './Home.svelte';
+  import Search from './Search.svelte';
   import { getPartsById } from "./mongo.js";
+  import {getPartsSearch} from "./mongo.js";
   import { getImageUrl } from "./storage.js";
-  import { each, loop_guard } from "svelte/internal";
 
   let id = "";
+  let searchTerm = "";
   let parts = null;
   let imageUrl = "";
   let searchID = "";
+  let data = null;
 
   async function handleSubmit(event) {
     event.preventDefault();
     parts = null;
     imageUrl = "";
-    parts = await getPartsById(id);
-    if (parts === null) {
-      parts = "None"
-      searchID = id
-    } else {
-      imageUrl = await getImageUrl(id);
-    }
+    console.log(searchTerm);
+    data = await getPartsSearch(searchTerm);
     
   }
 
@@ -42,6 +38,8 @@
 
   async function handleClick(event) {
     event.preventDefault();
+    searchTerm = "";  
+    data = null;
     id = "";
     parts = null;
     imageUrl = "";
@@ -57,12 +55,13 @@
       <form on:submit={handleSubmit}>
         <label>
           ID:
-          <input type="text" bind:value={id} />
+          <input type="text" bind:value={searchTerm} />
         </label>
         <button type="submit">Search</button>
       </form>
     </div>
   </div>
-  <Home {parts} {handleImgClick}/>
+  <Home {parts} {handleImgClick} {data}/>
+  <Search {parts} {handleImgClick} {data}/>
   <Result {parts} {imageUrl} {id} {searchID}/>
 </main>
