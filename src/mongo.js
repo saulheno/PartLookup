@@ -27,6 +27,10 @@ export async function getPartsById(id) {
   });
   const data = await response.json();
   console.log(data)
+  if (data.document === null) {
+    console.log('No parts found');
+    return null
+  }
   return data.document.parts;
 }
 

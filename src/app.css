@@ -14,6 +14,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+h1:hover {
+  cursor: pointer;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -125,17 +129,12 @@ table td, table th {
   display: flex;
   justify-content: right;
   align-items: center;
-  flex-basis: 33%;
+  flex-basis: 40%;
 }
-#id{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 33%;
-}
+
 #Header {
   display: flex;
   justify-content: left;
   align-items: center;
-  flex-basis: 33%;
+  flex-basis: 60%;
 }
