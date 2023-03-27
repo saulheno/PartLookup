@@ -35,7 +35,7 @@
 {/if}
 
 <style>
-    .thumbnails {
+     .thumbnails {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -45,7 +45,7 @@
 
     .container {
         position: relative;
-        width: calc(100% / 6);
+        width: calc(100% / 7);
         margin-bottom: 10px;
         margin-right: 10px;
     }
@@ -82,7 +82,7 @@
 
         .container {
             width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .caption {
