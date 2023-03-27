@@ -2,36 +2,45 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  }
-  
-  h1:hover {
-  cursor: pointer;
-  }
-  
-  a {
+}
+
+#searchbox {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
   font-weight: 500;
-  color: #6cb6ff;
-  text-decoration: none;
-  }
-  a:hover {
-  color: #54a1ff;
-  }
-  
-  body {
+  font-family: inherit;
+  background-color: #292929;
+  color: #fff;
+  transition: border-color 0.25s;
+}
+
+#searchbox:hover {
+  border-color: #ff6600;
+}
+
+#searchbox:focus,
+#searchbox:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+
+body {
   height: 100%;
-  }
-  
-  button {
+}
+
+button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -41,42 +50,51 @@
   background-color: #292929;
   color: #fff;
   cursor: pointer;
-  transition: border-color 0.25s;
-  }
-  button:hover {
-  border-color: #6cb6ff;
-  }
-  button:focus,
-  button:focus-visible {
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+button:hover {
+  border-color: #ff6600;
+  background-color: #ff6600;
+}
+
+button:focus,
+button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-  }
-  
-  @media (prefers-color-scheme: light) {
+  background-color: #ff6600;
+  border-color: #ff6600;
+}
+
+@media (prefers-color-scheme: light) {
   :root {
-  color: #213547;
-  background-color: #ffffff;
+    color: #213547;
+    background-color: #ffffff;
   }
-  a:hover {
-  color: #747bff;
+  #searchbox {
+    background-color: #f9f9f9;
+    color: #ff6600;
+  }
+  #searchbox:hover {
+    border-color: #ff6600;
   }
   button {
-  background-color: #f9f9f9;
-  color: #000;
+    background-color: #f9f9f9;
+    color: #000;
   }
-  }
-  
-  table {
+}
+
+table {
   table-layout: fixed;
   width: 100%;
-  }
-  
-  table td,
-  table th {
+}
+
+table td,
+table th {
   padding: 5px;
   text-align: left;
-  }
-  
-  #main {
+}
+
+#main {
   border-collapse: collapse;
   width: 100%;
   max-width: 800px;
@@ -84,61 +102,74 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   font-size: 14px;
   background-color: #1c1c1c;
-  }
-  
-  #main th,
-  #main td {
+}
+
+#main th,
+#main td {
   border: 1px solid #333;
   text-align: left;
   padding: 8px;
-  }
-  
-  #main th {
+}
+
+#main th {
   background-color: #333;
   color: #fff;
   font-weight: bold;
-  }
-  
-  #main tr:nth-child(even) {
+}
+
+#main tr:nth-child(even) {
   background-color: #292929;
-  }
-  
-  .container {
+}
+
+.container {
   display: flex;
   flex-wrap: wrap;
-  }
-  
-  .image-container {
+}
+
+.image-container {
   flex-basis: 40%;
   width: 100%;
   height: 100%;
   float: left;
-  
-  }
-  
-  .image-container img {
+
+}
+
+.image-container img {
   max-width: 100vw;
   max-height: 85vh;
   object-fit: cover;
-  }
-  .table-container {
+}
+
+.table-container {
   max-width: 100vh;
   max-height: 85vh;
   overflow: auto;
-  }
-  #surround {
+}
+
+#surround {
   display: flex;
-  }
-  #search {
+}
+
+#search {
   display: flex;
   justify-content: right;
   align-items: center;
   flex-basis: 40%;
-  }
-  
-  #Header {
+}
+
+#Header {
   display: flex;
   justify-content: left;
   align-items: center;
   flex-basis: 60%;
-  }
+}
+
+#Header h1 {
+  transition: all 0.3s ease-in-out;
+}
+
+#Header h1:hover {
+  text-shadow: 2px 2px 0 #ff6600;
+  /* change to your desired hover color and offset */
+  cursor: pointer;
+}

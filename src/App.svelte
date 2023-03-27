@@ -54,8 +54,7 @@
     <div id="search">
       <form on:submit={handleSubmit}>
         <label>
-          ID:
-          <input type="text" bind:value={searchTerm} />
+          <input type="text" id= "searchbox" bind:value={searchTerm} />
         </label>
         <button type="submit">Search</button>
       </form>
