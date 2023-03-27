@@ -64,8 +64,7 @@ export async function getPartsSearch(searchTerm) {
       filter: {
         $or: [
           { "id": { $regex: regexString, $options: 'i' } },
-          { "name": { $regex: regexString, $options: 'i' } },
-          { "parts": { $elemMatch: { $elemMatch: { "partname": { $regex: regexString, $options: 'i' } } } } }
+          { "name": { $regex: regexString, $options: 'i' } }
         ]
       }
     })
