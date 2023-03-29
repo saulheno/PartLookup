@@ -7,9 +7,9 @@ export async function getPartsById(id) {
   const apiAuth = await fetch('https://realm.mongodb.com/api/client/v2.0/app/data-zkogu/auth/providers/anon-user/login', {
     method: 'POST',
   });
-  console.log(apiAuth)
+  //console.log(apiAuth)
   const auth = await apiAuth.json()
-  console.log(auth)
+  //console.log(auth)
   const bear = 'Bearer ' + auth.access_token;
   const response = await fetch('https://eu-west-1.aws.data.mongodb-api.com/app/data-zkogu/endpoint/data/v1/action/findOne', {
     method: 'POST',
@@ -71,7 +71,7 @@ export async function getPartsSearch(searchTerm) {
   });
   const data = await response.json();
   let parts = [];
-  console.log(data)
+  //console.log(data)
   for (let i = 0; i < data.documents.length; i++) {
     if (data.documents[i].name !== undefined) {
       parts[data.documents[i].id] = data.documents[i].name;
@@ -79,7 +79,7 @@ export async function getPartsSearch(searchTerm) {
       parts[data.documents[i].id] = '';
     }
   }
-  console.log(parts);
+  //console.log(parts);
   return parts;
 }
 
